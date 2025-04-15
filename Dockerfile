@@ -1,14 +1,10 @@
 
-FROM node:16
+FROM redhat/ubi9-minimal
 
 WORKDIR /app
 
-COPY . .
+COPY HelloWorld.class /app/
 
-RUN npm install
+RUN microdnf install -y openjdk-8
 
-COPY . .
-
-EXPOSE 8080
-
-CMD [ "node", "app.js" ]
+CMD [ "java", "HelloWorld" ]
